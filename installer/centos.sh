@@ -101,6 +101,6 @@ if pgrep -x "cpanel" > /dev/null; then
   echo -e "${YELLOW}Goodbye!${NC}"
   fi
 else
-  echo -e "${RED}cPanel Install Failed. Please Check Log File Available at /etc/cp_install.log ${NC}"
+  echo -e "${RED}cPanel Install Failed. Please Check Log File Available at /etc/cpanel_install.log ${NC}"
   echo -e "${YELLOW}Goodbye!${NC}"
 fi
