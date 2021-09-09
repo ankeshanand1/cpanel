@@ -26,7 +26,7 @@ echo "          cPanel Installer           "
 echo "Author: Ankesh Anand                 "
 echo "Copyright: GNU General Public License"
 echo "Supported OS: CentOS7.9,Centos8      "
-echo "Version: 1.0.1                       "
+echo "Version: 1.0.2                       "
 echo "Release Date:                        "
 echo "Credits: cPanel/WHM, Github          "
 echo "-------------------------------------"
@@ -65,6 +65,8 @@ systemctl start network.service > /dev/null 2>&1
 echo -e "${YELLOW}Updating System${NC}"
 sleep 1
 yum -y update > /dev/null 2>&1 && yum -y upgrade > /dev/null 2>&1
+yum -y install perl > /dev/null 2>&1
+yum -y install curl > /dev/null 2>&1
 
 echo -e "${YELLOW}Installing cPanel/WHM and Packages${NC}"
 sleep 1
