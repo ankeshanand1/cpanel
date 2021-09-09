@@ -86,13 +86,19 @@ echo -e "${YELLOW}All Packages Installed. Finishing Installation${NC}"
 sleep 1
 hostnamectl set-hostname $HOST --static
 yum -y install nano > /dev/null 2>&1
+yum -y install pgrep > /dev/null 2>&1
 
-echo ""
-echo -e "${YELLOW}Everything set! Server needs a Reboot. Reboot Now(Y/N)${NC}"
-read RBOOT
-if [[ "$RBOOT" == "Y" || "$RBOOT" == "y" ]]
-then
-reboot
+if pgrep -x "cpanel" > /dev/null; then
+  echo ""
+  echo -e "${YELLOW}Everything set! Server needs a Reboot. Reboot Now(Y/N)${NC}"
+  read RBOOT
+  if [[ "$RBOOT" == "Y" || "$RBOOT" == "y" ]]
+  then
+  reboot
+  else
+  echo -e "${YELLOW}Goodbye!${NC}"
+  fi
 else
-echo -e "${YELLOW}Goodbye!${NC}"
+  echo -e "${RED}cPanel Install Failed. Please Check Log File Available at /etc/cp_install.log ${NC}"
+  echo -e "${YELLOW}Goodbye!${NC}"
 fi
