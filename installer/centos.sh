@@ -86,8 +86,6 @@ echo -e "${YELLOW}All Packages Installed. Finishing Installation${NC}"
 sleep 1
 hostnamectl set-hostname $HOST --static
 yum -y install nano > /dev/null 2>&1
-curl -s https://install.speedtest.net/app/cli/install.rpm.sh > /dev/null 2>&1 | sudo bash > /dev/null 2>&1
-yum -y install speedtest
 
 echo ""
 echo -e "${YELLOW}Everything set! Server needs a Reboot. Reboot Now(Y/N)${NC}"
