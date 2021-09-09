@@ -15,7 +15,7 @@ In CentOS-MINIMAL, WGET is not included and You have to Install it using:
 ```
 yum install wget
 ```
-![Screenshot of a terminal for CentOS Version](doc/centos.png)  
+![Screenshot of a terminal for CentOS Version](/doc/centos.png)  
 cPanel/WHM Installation Log File:
 ```
 /etc/cpanel_install.log
