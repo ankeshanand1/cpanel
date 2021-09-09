@@ -90,7 +90,7 @@ yum -y install nano > /dev/null 2>&1
 echo ""
 echo -e "${YELLOW}Everything set! Server needs a Reboot. Reboot Now(Y/N)${NC}"
 read RBOOT
-if [[ $RBOOT -gt 'Y' ]]
+if [ $RBOOT -gt 'Y' ] || [ $RBOOT -gt 'y' ]
 then
 reboot
 else
