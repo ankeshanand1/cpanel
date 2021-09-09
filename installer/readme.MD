@@ -11,7 +11,11 @@ Unofficial ONE-CLICK Installation Script for WHM/cPanel
 ```
 wget -O quick.sh https://raw.githubusercontent.com/ankeshanand1/cpanel/main/install/centos.sh && chmod 755 quick.sh && ./quick.sh
 ```
-
+In CentOS-MINIMAL, WGET is not included and You have to Install it using:
+```
+yum install wget
+```
+![Screenshot of a terminal for CentOS Version](doc/centos.png)  
 cPanel/WHM Installation Log File:
 ```
 /etc/cpanel_install.log
