@@ -13,7 +13,7 @@ wget -O quick.sh https://raw.githubusercontent.com/ankeshanand1/cpanel/main/inst
 ```
 In CentOS-minimal, wget is not included and You have to Install it using:
 ```
-yum install wget
+yum -y install wget
 ```
 ![Screenshot of a terminal for CentOS Version](/doc/centos.png)  
 cPanel/WHM Installation Log File:
