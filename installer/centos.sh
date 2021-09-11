@@ -26,7 +26,7 @@ echo "          cPanel Installer           "
 echo "Author: Ankesh Anand                 "
 echo "Copyright: GNU General Public License"
 echo "Supported OS: CentOS7.9,Centos8      "
-echo "Version: 1.0.2                       "
+echo "Version: 1.0.3                       "
 echo "Release Date:                        "
 echo "Credits: cPanel/WHM, Github          "
 echo "-------------------------------------"
@@ -35,7 +35,12 @@ echo ""
 
 echo -e "${YELLOW}What Hostname would you like to keep?${NC}"
 read HOST
+if [[ -v $host ]]
 hostnamectl set-hostname $HOST --static
+else
+echo -e "${RED}You did not enter a HostName, Goodbye${NC}"
+exit
+fi
 sleep 1
 echo -e "${GREEN}Your Hostname is set to '"$HOST"'${NC}"
 
