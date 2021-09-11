@@ -26,7 +26,7 @@ echo "          cPanel Installer           "
 echo "Author: Ankesh Anand                 "
 echo "Copyright: GNU General Public License"
 echo "Supported OS: CentOS7.9,Centos8      "
-echo "Version: 1.0.3                       "
+echo "Version: 1.0.4                       "
 echo "Release Date: 11/09/2021             "
 echo "Credits: cPanel/WHM, Github          "
 echo "-------------------------------------"
@@ -93,12 +93,12 @@ echo -e "${YELLOW}All Packages Installed. Finishing Installation${NC}"
 sleep 1
 hostnamectl set-hostname $host --static
 yum -y install nano > /dev/null 2>&1
-yum -y install pgrep > /dev/null 2>&1
 
-if pgrep -x "cpanel" > /dev/null; then
+if (systemctl -q is-active cpanel.service); then
   echo ""
   echo -e "${YELLOW}Everything set! Server needs a Reboot. Reboot Now(Y/N)${NC}"
   read RBOOT
+  echo -e "${YELLOW}Goodbye!${NC}"
   if [[ "$RBOOT" == "Y" || "$RBOOT" == "y" ]]
   then
   reboot
@@ -106,6 +106,6 @@ if pgrep -x "cpanel" > /dev/null; then
   echo -e "${YELLOW}Goodbye!${NC}"
   fi
 else
-  echo -e "${RED}cPanel Install Failed. Please Check Log File Available at /etc/cpanel_install.log ${NC}"
+  echo -e "${RED}cPanel Installation Failed or cPanel Service has Failed. Please Check Log File Available at /etc/cpanel_install.log ${NC}"
   echo -e "${YELLOW}Goodbye!${NC}"
 fi
