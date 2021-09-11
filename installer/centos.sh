@@ -98,14 +98,14 @@ if (systemctl -q is-active cpanel.service); then
   echo ""
   echo -e "${YELLOW}Everything set! Server needs a Reboot. Reboot Now(Y/N)${NC}"
   read RBOOT
-  echo -e "${YELLOW}Goodbye!${NC}"
+  echo -e "${GREEN}Goodbye!${NC}"
   if [[ "$RBOOT" == "Y" || "$RBOOT" == "y" ]]
   then
   reboot
   else
-  echo -e "${YELLOW}Goodbye!${NC}"
+  echo -e "${GREEN}Goodbye!${NC}"
   fi
 else
   echo -e "${RED}cPanel Installation Failed or cPanel Service has Failed. Please Check Log File Available at /etc/cpanel_install.log ${NC}"
-  echo -e "${YELLOW}Goodbye!${NC}"
+  echo -e "${RED}Goodbye!${NC}"
 fi
