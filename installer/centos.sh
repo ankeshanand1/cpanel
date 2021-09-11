@@ -27,15 +27,15 @@ echo "Author: Ankesh Anand                 "
 echo "Copyright: GNU General Public License"
 echo "Supported OS: CentOS7.9,Centos8      "
 echo "Version: 1.0.3                       "
-echo "Release Date:                        "
+echo "Release Date: 11/09/2021             "
 echo "Credits: cPanel/WHM, Github          "
 echo "-------------------------------------"
 sleep 1
 echo ""
 
 echo -e "${YELLOW}What Hostname would you like to keep?${NC}"
-read HOST
-if [[ -v $host ]]
+read host
+if [[ $host ]];then
 hostnamectl set-hostname $HOST --static
 else
 echo -e "${RED}You did not enter a HostName, Goodbye${NC}"
