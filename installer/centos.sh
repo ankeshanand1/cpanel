@@ -35,14 +35,14 @@ echo ""
 
 echo -e "${YELLOW}What Hostname would you like to keep?${NC}"
 read host
-if [[ $host ]];then
-hostnamectl set-hostname $HOST --static
+if [[ "$host" ]];then
+hostnamectl set-hostname $host --static
 else
 echo -e "${RED}You did not enter a HostName, Goodbye${NC}"
 exit
 fi
 sleep 1
-echo -e "${GREEN}Your Hostname is set to '"$HOST"'${NC}"
+echo -e "${GREEN}Your Hostname is set to '"$host"'${NC}"
 
 echo "Installation would start in 10sec. To Cancel Installation,Click Ctrl+C"
 sleep 10
@@ -91,7 +91,7 @@ echo -e "${RED}Errors(warn) May be Shown. Don't Worry!${NC}"
 echo ""
 echo -e "${YELLOW}All Packages Installed. Finishing Installation${NC}"
 sleep 1
-hostnamectl set-hostname $HOST --static
+hostnamectl set-hostname $host --static
 yum -y install nano > /dev/null 2>&1
 yum -y install pgrep > /dev/null 2>&1
 
