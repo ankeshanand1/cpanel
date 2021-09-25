@@ -26,8 +26,8 @@ echo "          cPanel Installer           "
 echo "Author: Ankesh Anand                 "
 echo "Copyright: GNU General Public License"
 echo "Supported OS: CentOS7.9,Centos8      "
-echo "Version: 1.0.4                       "
-echo "Release Date: 11/09/2021             "
+echo "Version: 1.0.5                       "
+echo "Release Date: 25/09/2021             "
 echo "Credits: cPanel/WHM, Github          "
 echo "-------------------------------------"
 sleep 1
@@ -47,6 +47,13 @@ echo -e "${GREEN}Your Hostname is set to '"$host"'${NC}"
 echo "Installation would start in 10sec. To Cancel Installation,Click Ctrl+C"
 sleep 10
 
+echo -e "${YELLOW}Updating System${NC}"
+sleep 1
+yum -y update > /dev/null 2>&1 && yum -y upgrade > /dev/null 2>&1
+yum -y install epel-release > /dev/null 2>&1
+yum -y install perl > /dev/null 2>&1
+yum -y install curl > /dev/null 2>&1
+
 echo -e "${YELLOW}Setting Up the Network${NC}"
 sleep 1
 echo "nameserver 8.8.8.8" >> /etc/resolv.conf
@@ -54,7 +61,8 @@ echo "nameserver 8.8.4.4" >> /etc/resolv.conf
 echo "nameserver 1.1.1.1" >> /etc/resolv.conf
 systemctl stop NetworkManager > /dev/null 2>&1
 systemctl disable NetworkManager > /dev/null 2>&1
-FILE=/etc/sysconfig/network-scripts/ifcfg-eth0
+inth=$(netstat -i | grep '^[a-z]' | awk '{print $1}' | grep -v 'lo')
+FILE=/etc/sysconfig/network-scripts/ifcfg-$inth
 if test -f "$FILE"; then
 sed -i 's/NM_CONTROLLED=yes/NM_CONTROLLED=no/g' /etc/sysconfig/network-scripts/ifcfg-eth0 > /dev/null 2>&1
 sed -i 's/ONBOOT=no/ONBOOT=yes/g' /etc/sysconfig/network-scripts/ifcfg-eth0 > /dev/null 2>&1
@@ -66,12 +74,6 @@ sed -i 's/ONBOOT=no/ONBOOT=yes/g' /etc/sysconfig/network-scripts/ifcfg-lo > /dev
 fi
 systemctl enable network.service > /dev/null 2>&1
 systemctl start network.service > /dev/null 2>&1
-
-echo -e "${YELLOW}Updating System${NC}"
-sleep 1
-yum -y update > /dev/null 2>&1 && yum -y upgrade > /dev/null 2>&1
-yum -y install perl > /dev/null 2>&1
-yum -y install curl > /dev/null 2>&1
 
 echo -e "${YELLOW}Installing cPanel/WHM and Packages${NC}"
 sleep 1
