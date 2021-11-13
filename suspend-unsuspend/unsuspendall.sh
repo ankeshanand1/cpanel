@@ -22,7 +22,7 @@ WHITE='\033[1;37m'
 
 sleep 1
 echo "-------------------------------------"
-echo "    cPanel Suspend All Accounts      "
+echo "    cPanel Unsuspend All Accounts      "
 echo "Author: Ankesh Anand                 "
 echo "Copyright: GNU General Public License"
 echo "Version: 1.0.0                       "
