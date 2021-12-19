@@ -25,12 +25,12 @@ sleep 10
 
 echo -e "${YELLOW}Installing Repo${NC}"
 sleep 1
-yum install http://repo.jetlicense.com/centOS/jetapps-repo-latest.rpm > /etc/jetbackup_install.log
+yum install -y http://repo.jetlicense.com/centOS/jetapps-repo-latest.rpm > /etc/jetbackup_install.log
 yum clean all --enablerepo=jetapps* > /etc/jetbackup_install.log
 
 echo -e "${YELLOW}Installing Jetapps cPanel Plugin${NC}"
 sleep 1
-yum install jetapps-cpanel --disablerepo=* --enablerepo=jetapps > /etc/jetbackup_install.log
+yum install -y jetapps-cpanel --disablerepo=* --enablerepo=jetapps > /etc/jetbackup_install.log
 
 echo -e "${YELLOW}Installing JetBackup Stable release${NC}"
 sleep 1
